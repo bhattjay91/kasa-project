@@ -80,8 +80,45 @@ export default {
   ** PWA configuration
   */
   pwa: {
-      workbox: {
-        /* workbox options */
+    manifest:{
+      short_name: 'KP',
+      name: 'Kasa Project',
+      start_url: '/',
+      theme_color: '#302a8d',
+    },
+    /*workbox: {
+      runtimeCaching: [
+        {
+          urlPattern: new RegExp('^https://jay-bhatt-kasa-project.herokuapp.com/'),
+          handler: 'networkFirst',
+          strategyOptions: {
+            cacheName: 'api-cache',
+            networkTimeoutSeconds: 20,
+            cacheableResponse:{
+              statuses:[0,200]
+            },
+            cacheExpiration: {
+              maxEntries: 10,
+              maxAgeSeconds: 300
+            }
+          }
+        }
+      ]
+    }*/
+    workbox: {
+      runtimeCaching: [
+           {
+             urlPattern: 'https://jay-bhatt-kasa-project.herokuapp.com/.*',
+             strategyOptions: {
+               cacheName: 'our-cache',
+               cacheExpiration: {
+                 maxEntries: 10,
+                 maxAgeSeconds: 300
+               }
+             }
+           }
+         ]
       }
-    }
+  },
+
 }
