@@ -86,10 +86,12 @@ export default {
       start_url: '/',
       theme_color: '#302a8d',
     },
-    /*workbox: {
+    workbox: {
+      /* workbox options */
+      dev: true,
       runtimeCaching: [
         {
-          urlPattern: new RegExp('^https://jay-bhatt-kasa-project.herokuapp.com/'),
+          urlPattern: 'https://jay-bhatt-kasa-project.herokuapp.com/.*',
           handler: 'networkFirst',
           strategyOptions: {
             cacheName: 'api-cache',
@@ -104,21 +106,7 @@ export default {
           }
         }
       ]
-    }*/
-    workbox: {
-      runtimeCaching: [
-           {
-             urlPattern: 'https://jay-bhatt-kasa-project.herokuapp.com/.*',
-             strategyOptions: {
-               cacheName: 'our-cache',
-               cacheExpiration: {
-                 maxEntries: 10,
-                 maxAgeSeconds: 300
-               }
-             }
-           }
-         ]
-      }
+    }
   },
 
 }
