@@ -47,11 +47,11 @@
       getReservations: function(){
         let self = this
         this.showFullList = true
-        let url = 'http://localhost:1337/Reservations?_sort=checkInDate:ASC'
+        let url = 'https://jay-bhatt-kasa-project.herokuapp.com/Reservations?_sort=checkInDate:ASC'
         if(this.search != ""){
           //const query = qs.stringify({ _where: { _or: [{ city_contains: this.search }, { confirmationCode_contains: this.search }] } });
 
-           url = 'http://localhost:1337/Reservations?_where[_or][0][city_contains]='+this.search+'&_where[_or][1][confirmation_code]='+this.search
+           url = 'https://jay-bhatt-kasa-project.herokuapp.com/Reservations?_where[_or][0][city_contains]='+this.search+'&_where[_or][1][confirmation_code]='+this.search
         }
         axios.get(url, {headers: {'Accept': 'application/json'}}).then(function (response) {
           self.listOfReservations = response.data

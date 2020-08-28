@@ -67,7 +67,7 @@
       getSingleReservation: function(){
         let self = this
         this.$data.loading = true
-        axios.get('http://localhost:1337/Reservations?confirmation_code='+this.$route.params.confirmationCode, {headers: {'Accept': 'application/json'}}).then(function (response) {
+        axios.get('https://jay-bhatt-kasa-project.herokuapp.com/Reservations?confirmation_code='+this.$route.params.confirmationCode, {headers: {'Accept': 'application/json'}}).then(function (response) {
 
           self.loading = false
           self.reservation = response.data[0]
