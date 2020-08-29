@@ -88,7 +88,7 @@ export default {
     },
     workbox: {
       /* workbox options */
-      dev: true,
+      dev: false,
       runtimeCaching: [
         {
           urlPattern: 'https://jay-bhatt-kasa-project.herokuapp.com/.*',
