@@ -1,3 +1,4 @@
+const isDev = process.env.NODE_ENV !== "production"
 
 export default {
   /*
@@ -31,10 +32,6 @@ export default {
       { src: 'https://code.jquery.com/jquery-3.5.1.slim.min.js' },
       { src: 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js' }
     ]
-  },
-  transition:{
-    name: 'page',
-    mode: 'out-in'
   },
   /*
   ** Global CSS
@@ -85,14 +82,15 @@ export default {
       name: 'Kasa Project',
       start_url: '/',
       theme_color: '#302a8d',
+      display: 'standalone',
     },
     workbox: {
       /* workbox options */
-      dev: false,
+      dev: isDev,
       runtimeCaching: [
         {
           urlPattern: 'https://jay-bhatt-kasa-project.herokuapp.com/.*',
-          handler: 'cacheFirst',
+          cacheName: 'api-cache',
           method: 'GET',
           strategyOptions: { cacheableResponse: { statuses: [0, 200] } }
         },
