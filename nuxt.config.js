@@ -92,7 +92,6 @@ export default {
       runtimeCaching: [
         {
           urlPattern: 'https://jay-bhatt-kasa-project.herokuapp.com/.*',
-          handler: 'networkFirst',
           strategyOptions: {
             cacheName: 'api-cache',
             networkTimeoutSeconds: 20,
