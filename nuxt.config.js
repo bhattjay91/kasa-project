@@ -92,6 +92,15 @@ export default {
       runtimeCaching: [
         {
           urlPattern: 'https://jay-bhatt-kasa-project.herokuapp.com/.*',
+          handler: 'cacheFirst',
+          method: 'GET',
+          strategyOptions: { cacheableResponse: { statuses: [0, 200] } }
+        },
+      ]
+      /*
+      runtimeCaching: [
+        {
+          urlPattern: 'https://jay-bhatt-kasa-project.herokuapp.com/.*',
           strategyOptions: {
             cacheName: 'api-cache',
             networkTimeoutSeconds: 20,
@@ -104,7 +113,7 @@ export default {
             }
           }
         }
-      ]
+      ]*/
     }
   },
 
