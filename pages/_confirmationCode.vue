@@ -1,75 +1,118 @@
 <template>
 
-<div v-if="!loading">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="">
-          <span class="kasaTitle">Your reservation in {{reservation.city}}, {{reservation.State}}</span>
-        </div>
-      </div>
-    </div>
-    <div class="row pt-4">
-      <div class="col-4">
-        <div class="">
-            <img src="img/architecture.jpg" class="rounded kasaImage" alt="...">
-        </div>
-      </div>
-      <div class="col-8 kasaBox">
-        <div class="list kasaAddress">
-          <label>Confirmation:</label> #{{reservation.confirmation_code}}
-        </div>
-        <div class="list kasaAddress">
-          <label>Location:</label> {{reservation.kasaName}}
-        </div>
-        <div class="list kasaCity">
-          <label>Address:</label> {{reservation.city}}, {{reservation.State}}
-        </div>
-        <div class="list kasaDates">
-          <label>Dates:</label> {{reservation.checkInDate | dateFormat}} - {{reservation.checkOutDate | dateFormat}} <span class="font-weight-light">({{reservation.nights}})</span>
-        </div>
-        <div class="list kasaRating">
-          <span class="fa fa-star ratingStars ratingChecked" v-for="rating in reservation.rating" > </span><span class="fa fa-star ratingStars" v-for="noRating in 5-reservation.rating" > </span>
-        </div>
-      </div>
-    </div>
-  </div>
+  <section class="section sectionConfirmation">
 
-      <nuxt-link to="/" class="btn btn-primary">Go Back</nuxt-link>
-</div>
+      <div class="container" >
+        <BreadCrumb :breadCrumbObject="breadCrumbObject" />
+        <div class="row">
+
+            <div class="col-lg-6 col-12 kasaBox">
+              <div class="list kasaAddress">
+                <label>Confirmation:</label> #{{reservation.confirmation_code}}
+              </div>
+              <div class="list kasaAddress">
+                <label>Location:</label> {{reservation.kasaName}}
+              </div>
+              <div class="list kasaCity">
+                <label>Address:</label> {{reservation.city}}, {{reservation.State}}
+              </div>
+              <div class="list kasaDates">
+                <label>Dates:</label> {{reservation.checkInDate | dateFormat}} - {{reservation.checkOutDate | dateFormat}} <span class="font-weight-light">({{reservation.nights}})</span>
+              </div>
+              <div class="list kasaRating">
+                <span class="fa fa-star ratingStars ratingChecked" v-for="rating in reservation.rating" > </span><span class="fa fa-star ratingStars" v-for="noRating in 5-reservation.rating" > </span>
+              </div>
+              <div class="col-2 d-inline ">
+                <img class="latestKasaImg" src="~/assets/img/houses/bed2.jpg" alt="" />
+
+              </div>
+              <div class="col-2 d-inline ">
+                <img class="latestKasaImg" src="~/assets/img/houses/livingroom2.jpg" alt="" />
+
+              </div>
+              <div class="col-2 d-inline ">
+                <img class="latestKasaImg" src="~/assets/img/houses/kitchen.jpg" alt="" />
+
+              </div>
+            </div>
+            <div class="col-lg-6 col-12 googleBox">
+              <GoogleMaps :reservationObject="reservation" />
+
+            </div>
+
+        </div>
+    </div>
+
+</section>
 </template>
 
 <script>
-  import axios from 'axios';
-
+  import BreadCrumb from '~/components/BreadCrumb.vue';
+  import GoogleMaps from '~/components/GoogleMaps.vue';
   export default {
     name: 'Confirmation',
+    components: {
+      BreadCrumb,
+      GoogleMaps
+    },
     data(){
       return {
+        breadCrumbObject:{
+          mainTitle: 'Your Reservation in',
+          subTitle: ''
+        },
         reservation:{},
-        loading: false
       }
     },
     filters: {
       dateFormat: function (value) {
+        if(value != ""){
+          var date = new Date(value);
+          date.setDate(date.getDate()+1);
+          const dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'short', day: '2-digit' })
+          const [{ value: month },,{ value: day },,{ value: year }] = dateTimeFormat.formatToParts(date )
+          return `${month} ${day}, ${year }`
+        }
 
-        var date = new Date(value);
-        date.setDate(date.getDate()+1);
-        const dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'short', day: '2-digit' })
-        const [{ value: month },,{ value: day },,{ value: year }] = dateTimeFormat.formatToParts(date )
-        return `${month} ${day}, ${year }`
+        return false
+
       }
     },
+    asyncData({$axios, params, app}){
+
+         return $axios.get('/Reservations?confirmation_code='+params.confirmationCode).then(function (response) {
+           let  reservation = response.data[0]
+           let date1 = new Date(reservation.checkInDate);
+           let date2 = new Date(reservation.checkOutDate);
+           let diff = new Date(date2.getTime() - date1.getTime());
+           let night = diff.getUTCDate() - 1
+           reservation.nights =  night+" night"+(night > 1 ? 's': '')
+           return { reservation: reservation }
+         })
+         .catch(function (error) {
+           console.log(error);
+        });
+    },
+
     created(){
-      this.getSingleReservation()
+
+      this.breadCrumbObject.subTitle = this.reservation.city+', '+this.reservation.State
+
+      //dont need this, using asyncData
+      //this.getSingleReservation()
     },
     methods:{
+
+        getOnlineStatus() {
+          return this.$nuxt.isOnline
+
+      },
+      /*
       getSingleReservation: function(){
         let self = this
-        this.$data.loading = true
+
         axios.get('https://jay-bhatt-kasa-project.herokuapp.com/Reservations?confirmation_code='+this.$route.params.confirmationCode, {headers: {'Accept': 'application/json'}}).then(function (response) {
 
-          self.loading = false
           self.reservation = response.data[0]
           let date1 = new Date(self.reservation.checkInDate);
           let date2 = new Date(self.reservation.checkOutDate);
@@ -80,8 +123,8 @@
         .catch(function (error) {
           console.log(error);
         });
-
       }
+      */
     }
   }
 </script>
@@ -102,7 +145,7 @@
 label{
   min-width: 90px;
   display: inline-block;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: #302a8d;
 }
 .ratingChecked{
@@ -118,6 +161,17 @@ label{
 .kasaBox{
   background-color: rgba(0,0,0,.03);
   padding: 10px;
+}
+.googleBox{
+  padding: 10px;
+}
+.sectionConfirmation{
+    padding-top: 1.375rem;
+    padding-bottom: 1.375rem;
+}
+.latestKasaImg {
+  margin-bottom: 5px;
+  width: 150px;
 }
 
 </style>

@@ -1,53 +1,104 @@
 <template>
-  <div class="">
-    <footer class="pt-4 my-md-5 pt-md-5 border-top bg-light">
-    <div class="row">
-      <div class="col-12 col-md" style="margin-left:20px;">
-        <small class="d-block mb-3 text-muted">Jay Bhatt © 2020</small>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6">
+            <h4>Cities</h4>
+            <ul class="list-unstyled three-column">
+              <li v-for="eachCities in cities">{{eachCities}}</li>
+            </ul>
+            <span class="text-muted">more...</span>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <h4>Guests</h4>
+            <ul class="list-unstyled">
+              <li>Book a Kasa</li>
+              <li>Location</li>
+              <li>FAQ</li>
+              <li>Guest Portal</li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4">
+            <h4>Latest Kasa</h4>
+            <img class="latestKasaImg" src="~/assets/img/houses/bed.jpg" alt="" />
+            <img class="latestKasaImg" src="~/assets/img/houses/living-room.jpg" alt="" />
+            <img class="latestKasaImg" src="~/assets/img/houses/large-home.jpg" alt="" />
+            <img class="latestKasaImg" src="~/assets/img/houses/home.jpg" alt="" />
+          </div>
+
+        </div>
       </div>
-      <div class="col-6 col-md">
-        <h5>Cities</h5>
-        <ul class="list-unstyled text-small">
-          <li><a class="text-muted">Atlanta</a></li>
-          <li><a class="text-muted">Austin</a></li>
-          <li><a class="text-muted">Chicago</a></li>
-          <li><a class="text-muted">Houston</a></li>
-          <li><a class="text-muted">New York City</a></li>
-          <li><a class="text-muted">San Jose</a></li>
-        </ul>
+      <div class="copyright text-center">
+        Copyright &copy; 2020 <span class="font-weight-bold">Jay Bhatt</span>
       </div>
-      <div class="col-6 col-md">
-        <h5>Guests</h5>
-        <ul class="list-unstyled text-small">
-          <li><a class="text-muted">Book a Kasa</a></li>
-          <li><a class="text-muted">Location</a></li>
-          <li><a class="text-muted">FAQ</a></li>
-          <li><a class="text-muted">Guest Portal</a></li>
-        </ul>
-      </div>
-      <div class="col-6 col-md">
-        <h5>Company & Resources</h5>
-        <ul class="list-unstyled text-small">
-          <li><a class="text-muted">About Kasa</a></li>
-          <li><a class="text-muted">Contact</a></li>
-          <li><a class="text-muted">Privacy</a></li>
-          <li><a class="text-muted">Terms</a></li>
-        </ul>
-      </div>
-    </div>
-  </footer>
-  </div>
+    </footer>
 </template>
 
 <script>
   export default {
     name: 'Footer',
+    data(){
+      return {
+        cities:['Atlanta', 'Austin', 'Chicago','Houston','Miami', 'Newport', 'New York City', 'San Jose'],
+      }
+    }
   }
 </script>
 
 
 <style scoped>
 a{
- color: #302a8d !important;
+ /* color: #302a8d !important; */
+}
+footer {
+  background-color: #f2f2f2;
+
+  padding-top: 10px;
+}
+
+footer a {
+  color: #aaa;
+}
+
+footer a:hover {
+  color: #fff;
+}
+
+footer h4 {
+ color: #302a8d;
+ letter-spacing: 1px;
+ margin: 30px 0 20px;
+}
+
+footer .three-column {
+ overflow: hidden;
+}
+
+footer .three-column li{
+ width: 33.3333%;
+  float: left;
+  padding: 5px 0;
+}
+
+
+.latestKasaImg {
+  margin-bottom: 5px;
+  width: 150px;
+}
+
+footer .copyright {
+  color: #302a8d;
+  padding: 15px 0;
+  background: #f2f2f2;
+  margin-top: 20px;
+  font-size: 15px;
+}
+
+footer .copyright span {
+  color: #F18B02;
 }
 </style>

@@ -25,7 +25,8 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: "stylesheet", type: "text/css", href: "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"},
-      { rel: "stylesheet", type: "text/css", href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" }
+      { rel: "stylesheet", type: "text/css", href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" },
+      { rel: 'stylesheet', type: "text/css", href: 'https://fonts.googleapis.com/css?family=Arimo:400,700|Roboto:300i,400,400i,500,700|Material+Icons&display=swap'}
     ],
     script: [
       { src: 'https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js' },
@@ -43,6 +44,7 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
+     '~/plugins/axios',
   ],
   /*
   ** Auto import components
@@ -61,12 +63,18 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
+    ['nuxt-gmaps', {
+      key: 'AIzaSyA265ivOqWLWvq2WAHhLAa4ml4I4Z9_1m4',
+      //you can use libraries: ['places']
+    }]
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
-  axios: {},
+  axios: {
+    baseURL: 'https://jay-bhatt-kasa-project.herokuapp.com',
+  },
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
@@ -86,35 +94,27 @@ export default {
     },
     workbox: {
       /* workbox options */
-      dev: isDev,
+      dev: false,
       runtimeCaching: [
         {
-          urlPattern: 'https://jay-bhatt-kasa-project.herokuapp.com/.*',
-          handler: 'cacheFirst',
+          urlPattern: '.*',
+          handler: 'networkFirst',
           method: 'GET',
           strategyOptions: {
             cacheName: 'api-cache',
             cacheableResponse: { statuses: [0, 200] }
           }
-        }
+        },
+        // {
+        //   urlPattern: 'https://maps.googleapis.com/.*',
+        //   handler: 'cacheFirst',
+        //   method: 'GET',
+        //   strategyOptions: {
+        //     cacheName: 'api-cache',
+        //     cacheableResponse: { statuses: [0, 200] }
+        //   }
+        // }
       ]
-      /*
-      runtimeCaching: [
-        {
-          urlPattern: 'https://jay-bhatt-kasa-project.herokuapp.com/.*',
-          strategyOptions: {
-            cacheName: 'api-cache',
-            networkTimeoutSeconds: 20,
-            cacheableResponse:{
-              statuses:[0,200]
-            },
-            cacheExpiration: {
-              maxEntries: 10,
-              maxAgeSeconds: 300
-            }
-          }
-        }
-      ]*/
     }
   },
 

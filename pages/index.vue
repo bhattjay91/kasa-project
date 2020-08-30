@@ -1,68 +1,31 @@
 <template>
-  <section class="jumbotron bg-white" :style="{ backgroundImage: `url(${backgroundUrl})` }">
-      <div class="container">
-        <div class="row">
-            <!-- <div class="col-12 " >
-              <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" data-interval="8000">
-                <div class="carousel-inner">
-                  <div :class="eachImage.active ? 'active' : ''" class="carousel-item" v-for="eachImage in homeImages">
-                    <img class="d-block w-100" :src="eachImage.src" :alt="eachImage.title" />
-                  </div>
-                </div>
-              </div >
-            </div> -->
-          <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12" style="background-color: #f7f7f7; padding:20px;">
-            <h2>Find your reservation</h2>
-            <p class="lead text-muted">You can search by providing the city or the confirmation code of your reservation.</p>
-            <SearchReservation />
-          </div>
-          <!-- <div class="col-lg-8 col-md-6 col-sm-2">
 
+  <section class="housePage " style="min-height: 732px;">
+   <div class="houseBackground">
+     <img src="~/assets/img/houses/house.jpg" alt="House Background">
+   </div>
+    <div class="reservationContainer d-flex flex-column justify-content-center">
+     <div class="container d-flex align-items-center justify-content-center justify-content-lg-start">
+     <div class="card border-0 rounded-0 col-lg-6 col-md-8 " >
+       <div class="card-body text-body ">
+         <h2 class="text-black">Find your reservation</h2>
+         <p class="lead text-muted">You can search by providing the city or the confirmation code of your reservation.</p>
+           <SearchReservation :reservationsList="reservationsList" />
+       </div>
+     </div>
+    </div>
+    </div>
+  </section>
 
-          </div> -->
-        </div>
-
-      </div>
-      </div>
-    </section>
 </template>
 
 <script>
   import SearchReservation from '~/components/SearchReservation.vue';
-  import backgroundUrl from '~/assets/house.jpg'
 
   export default {
     name: 'Home',
     components: {
       SearchReservation,
-    },
-    data(){
-        return {
-          backgroundUrl,
-          homeImages:[
-            {
-              title: 'Living room',
-              src: 'img/living-room.jpg',
-              active: true
-            },
-            {
-              title: 'Bed room',
-              src: 'img/bed.jpg'
-            },
-            {
-              title: 'Big size house',
-              src: 'img/large-room.jpg'
-            },
-            {
-              title: 'Hallway',
-              src: 'img/home.jpg'
-            },
-            {
-              title: 'Normal size house',
-              src: 'img/architecture.jpg'
-            },
-          ]
-        }
     },
     head(){
       return {
@@ -75,18 +38,66 @@
           }
         ]
       }
-    }
+    },
+    asyncData({$axios}){
+        return $axios.get('/Reservations?_sort=checkInDate:ASC').then(function (response) {
+          let  reservationsList = response.data
+          return { reservationsList: reservationsList }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
   }
 
 </script>
 
 <style scoped>
-.jumbotron{
-    background-position: center center;
-    -webkit-background-size: 100% 100%;
-    -moz-background-size: 100% 100%;
-    -o-background-size: 100% 100%;
-    background-size: 100% 100%;
-    border-radius: 0;
+
+.reservationContainer{
+  transition: all .75s ease-in-out;
+  transition-delay: .25s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
 }
+
+
+.houseBackground {
+    position: absolute;
+    z-index: 5;
+    visibility: hidden;
+    right: 0;
+    left: auto;
+    -webkit-animation: hero-bg-reveal 1s;
+    animation: hero-bg-reveal 1s;
+    visibility: visible;
+
+}
+
+@media (min-width:1400px) {
+  .houseBackground {
+    width: 70%
+  }
+}
+.houseBackground img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  font-family: "object-fit:cover";
+  object-fit: cover;
+}
+.houseBackground-overlay {
+    z-index: 6;
+}
+.housePage{
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  background: #fff;
+}
+
 </style>
