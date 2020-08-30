@@ -6,13 +6,15 @@
    </div>
     <div class="reservationContainer d-flex flex-column justify-content-center">
      <div class="container d-flex align-items-center justify-content-center justify-content-lg-start">
-     <div class="card border-0 rounded-0 col-lg-6 col-md-8 " >
-       <div class="card-body text-body ">
-         <h2 class="text-black">Find your reservation</h2>
-         <p class="lead text-muted">You can search by providing the city or the confirmation code of your reservation.</p>
+       <div class="col-lg-6 col-8">
+         <div class="card border-0 rounded-0" >
+           <div class="card-body text-body ">
+             <h2 class="text-black">Find your reservation</h2>
+          <p class="lead text-muted">You can search by providing the city or the confirmation code of your reservation.</p>
            <SearchReservation :reservationsList="reservationsList" />
        </div>
      </div>
+   </div>
     </div>
     </div>
   </section>
