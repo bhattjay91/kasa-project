@@ -97,23 +97,23 @@ export default {
       dev: false,
       runtimeCaching: [
         {
-          urlPattern: '.*',
-          handler: 'networkFirst',
+          urlPattern: 'https://jay-bhatt-kasa-project.herokuapp.com/.*',
+          handler: 'cacheFirst',
           method: 'GET',
           strategyOptions: {
             cacheName: 'api-cache',
             cacheableResponse: { statuses: [0, 200] }
           }
         },
-        // {
-        //   urlPattern: 'https://maps.googleapis.com/.*',
-        //   handler: 'cacheFirst',
-        //   method: 'GET',
-        //   strategyOptions: {
-        //     cacheName: 'api-cache',
-        //     cacheableResponse: { statuses: [0, 200] }
-        //   }
-        // }
+        {
+          urlPattern: 'https://maps.googleapis.com/.*',
+          handler: 'cacheFirst',
+          method: 'GET',
+          strategyOptions: {
+            cacheName: 'api-cache',
+            cacheableResponse: { statuses: [0, 200] }
+          }
+        }
       ]
     }
   },
