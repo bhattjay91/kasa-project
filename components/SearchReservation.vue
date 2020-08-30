@@ -79,7 +79,7 @@
   .list-group{
     max-height: 200px;
     margin-bottom: 10px;
-    overflow:scroll;
+    overflow-y:scroll;
     -webkit-overflow-scrolling: touch;
     border: none;
   }
