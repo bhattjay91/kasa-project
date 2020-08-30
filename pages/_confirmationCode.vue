@@ -3,7 +3,8 @@
   <section class="section sectionConfirmation">
       <div v-if="showError">
         <div class="container">
-          <h5>Invalid confirmation code. Please <nuxt-link to="/" class="ratingChecked">go back</nuxt-link> try again.</h5>
+          <h5>Oh No! </h5>
+          <p class="text-muted">Either you don't have internet connection or the confirmaton code is invalid. Please <nuxt-link to="/" class="ratingChecked">go back</nuxt-link> try again.</p>
         </div>
       </div>
       <div v-if="!showError" class="container" >
@@ -41,9 +42,7 @@
             </div>
             <div class="col-lg-6 col-12 googleBox">
               <GoogleMaps :reservationObject="reservation" />
-
             </div>
-
         </div>
     </div>
 
@@ -59,6 +58,18 @@
     components: {
       BreadCrumb,
       GoogleMaps,
+    },
+    head(){
+      return {
+        title: 'Your Reservation',
+        meta:[
+          {
+            hid: 'confirmation',
+            name: 'description',
+            content: 'Reservation Confirmation page'
+          }
+        ]
+      }
     },
     data(){
       return {
@@ -103,6 +114,7 @@
 
          })
          .catch(function (error) {
+           return {showError: true}
            console.log(error);
         });
     },
@@ -162,7 +174,7 @@ label{
   color: #302a8d;
 }
 .ratingChecked{
-  color: #302a8d !important;
+  color: #F18B02 !important;
 }
 .ratingStars {
   font-size:24px;
@@ -185,6 +197,9 @@ label{
 .latestKasaImg {
   margin-bottom: 5px;
   width: 150px;
+}
+.kasaRating{
+  padding-left:10px;
 }
 
 </style>

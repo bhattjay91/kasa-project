@@ -25,6 +25,18 @@ export default {
   components: {
     BreadCrumb,
   },
+  head(){
+    return {
+      title: 'FAQ',
+      meta:[
+        {
+          hid: 'faq',
+          name: 'faq',
+          content: 'Frequently Asked Questions'
+        }
+      ]
+    }
+  },
   data(){
     return {
       breadCrumbObject:{

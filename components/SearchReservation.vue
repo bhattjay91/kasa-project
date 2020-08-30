@@ -73,45 +73,45 @@
 </script>
 
 <style scoped>
-.searchBar{
-  height:60px;
-}
-.list-group{
+  .searchBar{
+    height:60px;
+  }
+  .list-group{
     max-height: 200px;
     margin-bottom: 10px;
     overflow:scroll;
     -webkit-overflow-scrolling: touch;
     border: none;
-}
-.link{
-  color: white;
-}
-.titleLink{
-  color: #302a8d;
-  cursor: pointer;
-}
-.badge-primary{
-  background-color: #302a8d;
-  padding:6px;
-  float:right;
-}
-.showList{
-  padding-top:2px;
-  cursor: pointer;
-  color: #302a8d;
-  float:right;
-}
-.list-group-item{
-  border: none;
-  border-bottom: 1px solid rgba(0,0,0,.125);
-}
-.list-group-item:hover{
-  background-color: rgba(0,0,0,.03);
-}
-.date{
+  }
+  .link{
+    color: white;
+  }
+  .titleLink{
+    color: #302a8d;
+    cursor: pointer;
+  }
+  .badge-primary{
+    background-color: #302a8d;
+    padding:6px;
+    float:right;
+  }
+  .showList{
+    padding-top:2px;
+    cursor: pointer;
+    color: #302a8d;
+    float:right;
+  }
+  .list-group-item{
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+  }
+  .list-group-item:hover{
+    background-color: rgba(0,0,0,.03);
+  }
+  .date{
   font-size:14px;
-}
-.listBox{
+  }
+  .listBox{
   border: 1px solid #ced4da;
   padding: 10px;
 }

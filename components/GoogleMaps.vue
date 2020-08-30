@@ -33,8 +33,8 @@
           currentLocation: {},
           locationsVisibleOnMap: "",
           locations: {
-              lat: 37.3382082,
-              lng: -121.8863286,
+              lat: 41.850033,
+              lng: -87.6500523,
               name: this.reservationObject.city+", "+this.reservationObject.State
           },
           pins: {
@@ -207,18 +207,15 @@
           let self = this
           let url = 'https://maps.googleapis.com/maps/api/geocode/json?address='+this.reservationObject.city+', '+this.reservationObject.State+'&key=AIzaSyA265ivOqWLWvq2WAHhLAa4ml4I4Z9_1m4'
           axios.get(url).then(function (response) {
-
               self.locations.lat = response.data.results[0].geometry.location.lat
               self.locations.lng = response.data.results[0].geometry.location.lng
               self.$refs.gMap.map.setCenter(self.locations);
-
           })
           .catch(function (error) {
             console.log(error);
           });
         }
       }
-
 
   }
 </script>

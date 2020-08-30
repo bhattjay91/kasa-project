@@ -82,7 +82,7 @@
 
 @media (min-width:1400px) {
   .houseBackground {
-    width: 90%
+    width: 70%
   }
 }
 .houseBackground img {
