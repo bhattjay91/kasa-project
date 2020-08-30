@@ -1,10 +1,14 @@
 <template>
 
   <section class="section sectionConfirmation">
-
-      <div class="container" >
+      <div v-if="showError">
+        <div class="container">
+          <h5>Invalid confirmation code. Please <nuxt-link to="/" class="ratingChecked">go back</nuxt-link> try again.</h5>
+        </div>
+      </div>
+      <div v-if="!showError" class="container" >
         <BreadCrumb :breadCrumbObject="breadCrumbObject" />
-        <div class="row">
+        <div  class="row">
 
             <div class="col-lg-6 col-12 kasaBox">
               <div class="list kasaAddress">
@@ -49,11 +53,12 @@
 <script>
   import BreadCrumb from '~/components/BreadCrumb.vue';
   import GoogleMaps from '~/components/GoogleMaps.vue';
+
   export default {
     name: 'Confirmation',
     components: {
       BreadCrumb,
-      GoogleMaps
+      GoogleMaps,
     },
     data(){
       return {
@@ -62,11 +67,14 @@
           subTitle: ''
         },
         reservation:{},
+        showError: false
       }
     },
     filters: {
       dateFormat: function (value) {
-        if(value != ""){
+
+        if(value != undefined){
+
           var date = new Date(value);
           date.setDate(date.getDate()+1);
           const dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'short', day: '2-digit' })
@@ -78,16 +86,21 @@
 
       }
     },
-    asyncData({$axios, params, app}){
+    asyncData({$axios, params}){
 
          return $axios.get('/Reservations?confirmation_code='+params.confirmationCode).then(function (response) {
-           let  reservation = response.data[0]
-           let date1 = new Date(reservation.checkInDate);
-           let date2 = new Date(reservation.checkOutDate);
-           let diff = new Date(date2.getTime() - date1.getTime());
-           let night = diff.getUTCDate() - 1
-           reservation.nights =  night+" night"+(night > 1 ? 's': '')
-           return { reservation: reservation }
+           if(response.data.length == 0){
+            return {showError: true}
+           } else {
+             let  reservation = response.data[0]
+             let date1 = new Date(reservation.checkInDate);
+             let date2 = new Date(reservation.checkOutDate);
+             let diff = new Date(date2.getTime() - date1.getTime());
+             let night = diff.getUTCDate() - 1
+             reservation.nights =  night+" night"+(night > 1 ? 's': '')
+             return { reservation: reservation }
+           }
+
          })
          .catch(function (error) {
            console.log(error);
