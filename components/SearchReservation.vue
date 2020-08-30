@@ -11,7 +11,7 @@
             <nuxt-link class="link" :to="eachReservation.confirmation_code"># {{eachReservation.confirmation_code}}  </nuxt-link>
           </small>
       </li>
-        <li v-if="listOfReservations.length == 0">No results found.</li>
+        <li class="text-muted" v-if="listOfReservations.length == 0">No results found.</li>
     </ul>
   </div>
 </template>
