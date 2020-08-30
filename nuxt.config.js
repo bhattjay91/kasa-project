@@ -94,6 +94,7 @@ export default {
     },
     workbox: {
       /* workbox options */
+      clientClaim: false,
       dev: false,
       runtimeCaching: [
         {
