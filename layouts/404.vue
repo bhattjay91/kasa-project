@@ -13,7 +13,6 @@
 <script>
 
 export default {
-  name: '404',
   head(){
     return {
       title: '404 Page Not Found',

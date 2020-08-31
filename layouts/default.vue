@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="">
+  <div id="app" class="container">
     <Header />
     <Nuxt />
     <Footer />
@@ -29,8 +29,13 @@ body {
     color: #212529;
     text-align: left;
     background-color: #fff;
+    min-height: 100vh;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 body {
     min-width: 992px!important;
 }
+
 </style>

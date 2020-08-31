@@ -19,7 +19,7 @@ export default {
     title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1' },
+      { name: 'viewport', content: 'width=device-width,initial-scale=1,shrink-to-fit=no' },
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
@@ -62,7 +62,6 @@ export default {
     '@nuxtjs/axios',
     ['nuxt-gmaps', {
       key: 'AIzaSyA265ivOqWLWvq2WAHhLAa4ml4I4Z9_1m4',
-      //you can use libraries: ['places']
     }],
     '@nuxtjs/pwa',
   ],
@@ -103,7 +102,7 @@ export default {
             cacheableResponse: { statuses: [0, 200] }
           }
         },
-        {
+        /*{
           urlPattern: 'https://maps.googleapis.com/.*',
           handler: 'cacheFirst',
           method: 'GET',
@@ -111,7 +110,7 @@ export default {
             cacheName: 'api-cache',
             cacheableResponse: { statuses: [0, 200] }
           }
-        }
+        }*/
       ]
     }
   },
