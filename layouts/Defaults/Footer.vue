@@ -24,10 +24,10 @@
 
           <div class="col-lg-4">
             <h4>Latest Kasa</h4>
-            <img class="latestKasaImg" src="~/assets/img/houses/bed.jpg" alt="bed" />
-            <img class="latestKasaImg" src="~/assets/img/houses/living-room.jpg" alt="living room" />
-            <img class="latestKasaImg" src="~/assets/img/houses/large-home.jpg" alt="large home" />
-            <img class="latestKasaImg" src="~/assets/img/houses/home.jpg" alt="home" />
+            <img class="latestKasaImg" src="~/assets/img/houses/smallsize/bed-small.jpg" alt="bed" />
+            <img class="latestKasaImg" src="~/assets/img/houses/smallsize/living-room-small.jpg" alt="living room" />
+            <img class="latestKasaImg" src="~/assets/img/houses/smallsize/large-home-small.jpg" alt="large home" />
+            <img class="latestKasaImg" src="~/assets/img/houses/smallsize/home-small.jpg" alt="home" />
           </div>
 
         </div>
