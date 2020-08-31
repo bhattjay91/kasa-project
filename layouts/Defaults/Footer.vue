@@ -9,7 +9,7 @@
             <ul class="list-unstyled three-column">
               <li v-for="eachCities in cities">{{eachCities}}</li>
             </ul>
-            <span class="text-muted">more...</span>
+            <small class="">more...</small>
           </div>
 
           <div class="col-lg-4 col-md-6">
@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="copyright text-center">
-        Copyright &copy; 2020 <span class="font-weight-bold">Jay Bhatt</span>
+        Copyright &copy; 2020 <span class="">Jay Bhatt</span>
       </div>
     </footer>
 </template>

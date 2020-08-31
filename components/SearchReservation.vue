@@ -1,7 +1,8 @@
 <template>
   <div class="">
     <div class="form-group">
-      <input type="text" v-model="search" class="form-control searchBar rounded-0" placeholder="New York City">
+
+      <input type="text" aria-label="Search" v-model="search" class="form-control searchBar rounded-0" placeholder="New York City">
     </div>
     <ul  class="listBox list-group rounded-0">
       <li class="list-group-item" v-for="eachReservation in listOfReservations">
