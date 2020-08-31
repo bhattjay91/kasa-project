@@ -41,8 +41,10 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-6 col-12 googleBox">
-              <GoogleMaps :reservationObject="reservation" />
+            <div class="col-lg-6 col-12 googleBox text-center">
+              <GoogleMaps v-if="$nuxt.isOnline" :reservationObject="reservation" />
+              <span v-if="!$nuxt.isOnline"> Google Map is offline.</span>
+              <img v-if="!$nuxt.isOnline" src="~/assets/img/icons/offlineMap.png"   class="img-thumbnail" alt="Google Map Offline"  />
             </div>
         </div>
     </div>
