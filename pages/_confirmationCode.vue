@@ -42,7 +42,7 @@
               </div>
             </div>
             <div class="col-lg-6 col-12 googleBox">
-              <GoogleMaps v-if="$nuxt.isOnline" :reservationObject="reservation" />
+              <GoogleMaps :reservationObject="reservation" />
             </div>
         </div>
     </div>
