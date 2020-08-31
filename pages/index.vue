@@ -6,7 +6,7 @@
    </div>
     <div class="reservationContainer d-flex flex-column justify-content-center">
      <div class="container d-flex align-items-center justify-content-center justify-content-lg-start">
-       <div class="col-lg-6 col-8">
+       <div class="col-lg-6 col-12">
          <div class="card border-0 rounded-0" >
            <div class="card-body text-body ">
              <h2 class="text-black">Find your reservation</h2>
@@ -85,12 +85,16 @@
     width: 70%
   }
 }
+
 .houseBackground img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
   font-family: "object-fit:cover";
   object-fit: cover;
+}
+img {
+    max-width: 100%;
 }
 .houseBackground-overlay {
     z-index: 6;

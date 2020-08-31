@@ -1,6 +1,6 @@
 <template>
-  <!-- <div class="container"> -->
-    <!-- <div class="row"> -->
+  <div class="container">
+    <div class="row">
       <nav class="navbar navbar-expand-lg navbar-light w-100" id="header-navbar">
           <nuxt-link to="/" class="my-0 mr-md-auto font-weight-normal logo"><img class="mb-2" src="~/assets/img/icons/door.png" alt="door" width="30" height="30"><h3 style="padding-left: 5px; display: inline-block;">Kasa</h3></nuxt-link>
           <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -16,8 +16,8 @@
          </span>
       </div>
       </nav>
-    <!-- </div> -->
-  <!-- </div> -->
+    </div>
+  </div>
 </template>
 
 <script>

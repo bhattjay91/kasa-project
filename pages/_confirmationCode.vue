@@ -27,17 +27,18 @@
               <div class="list kasaRating">
                 <span class="fa fa-star ratingStars ratingChecked" v-for="rating in reservation.rating" > </span><span class="fa fa-star ratingStars" v-for="noRating in 5-reservation.rating" > </span>
               </div>
-              <div class="col-2 d-inline ">
-                <img class="latestKasaImg" src="~/assets/img/houses/smallsize/bed2-small.jpg" alt="bed" />
+              <div class="row">
+                <div class="col">
+                  <img class="latestKasaImg" src="~/assets/img/houses/smallsize/bed2-small.jpg" alt="bed" />
 
-              </div>
-              <div class="col-2 d-inline ">
-                <img class="latestKasaImg" src="~/assets/img/houses/smallsize/livingroom2-small.jpg" alt="living room" />
+                </div>
+                <div class="col ">
+                  <img class="latestKasaImg" src="~/assets/img/houses/smallsize/livingroom2-small.jpg" alt="living room" />
 
-              </div>
-              <div class="col-2 d-inline ">
-                <img class="latestKasaImg" src="~/assets/img/houses/smallsize/kitchen-small.jpg" alt="kitchen" />
-
+                </div>
+                <div class="col ">
+                  <img class="latestKasaImg" src="~/assets/img/houses/smallsize/kitchen-small.jpg" alt="kitchen" />
+                </div>
               </div>
             </div>
             <div class="col-lg-6 col-12 googleBox">
