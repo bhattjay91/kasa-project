@@ -102,7 +102,7 @@ export default {
             cacheableResponse: { statuses: [0, 200] }
           }
         },
-        /*{
+        {
           urlPattern: 'https://maps.googleapis.com/.*',
           handler: 'cacheFirst',
           method: 'GET',
@@ -110,7 +110,7 @@ export default {
             cacheName: 'api-cache',
             cacheableResponse: { statuses: [0, 200] }
           }
-        }*/
+        }
       ]
     }
   },
