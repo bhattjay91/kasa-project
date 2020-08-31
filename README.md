@@ -1,4 +1,17 @@
-# kasa-project
+# Jay Bhatt
+## Kasa Project
+
+Welcome to **Kasa** Reservation Project,  an app that allow user to view their reservation list and confirmation page. User will have access to live data and as well offline data. The project was build using the following tool:
+
+ - NuxtJS
+ - PWA
+ - Bootsrap
+ - Strapi
+ - PostgreSQL
+
+## Demo site
+
+[Kasa Project](https://kasa.jb-production.com/)
 
 ## Build Setup
 
@@ -18,3 +31,8 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+![enter image description here](https://i.ibb.co/vsYh9BR/repository-open-graph-template-1.png)
+
+
+*Copyright 2020 - Jay Bhatt*
