@@ -28,15 +28,15 @@
                 <span class="fa fa-star ratingStars ratingChecked" v-for="rating in reservation.rating" > </span><span class="fa fa-star ratingStars" v-for="noRating in 5-reservation.rating" > </span>
               </div>
               <div class="col-2 d-inline ">
-                <img class="latestKasaImg" src="~/assets/img/houses/bed2.jpg" alt="" />
+                <img class="latestKasaImg" src="~/assets/img/houses/bed2.jpg" alt="bed" />
 
               </div>
               <div class="col-2 d-inline ">
-                <img class="latestKasaImg" src="~/assets/img/houses/livingroom2.jpg" alt="" />
+                <img class="latestKasaImg" src="~/assets/img/houses/livingroom2.jpg" alt="living room" />
 
               </div>
               <div class="col-2 d-inline ">
-                <img class="latestKasaImg" src="~/assets/img/houses/kitchen.jpg" alt="" />
+                <img class="latestKasaImg" src="~/assets/img/houses/kitchen.jpg" alt="kitchen" />
 
               </div>
             </div>
