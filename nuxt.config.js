@@ -110,6 +110,15 @@ export default {
             cacheName: 'api-cache',
             cacheableResponse: { statuses: [0, 200] }
           }
+        },
+        {
+          urlPattern: 'https://maps.gstatic.com/.*',
+          handler: 'cacheFirst',
+          method: 'GET',
+          strategyOptions: {
+            cacheName: 'api-cache',
+            cacheableResponse: { statuses: [0, 200] }
+          }
         }
       ]
     }
